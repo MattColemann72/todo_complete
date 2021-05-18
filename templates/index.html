@@ -1,0 +1,45 @@
+
+
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form method = "POST" action = "">
+    <h1>
+      Welcome To The Full Index Page
+    </h1>
+    <h2>
+      You can see all of the tasks TODO here
+    </h2>
+</form>
+
+{{task.task}} {{task.complete}}
+{% if task.complete == True %}
+
+<form action="{{ url_for("complete", todo_id=todo_list.id) }}">
+  <input type="submit" value="Incomplete">
+  </input>
+</form>
+
+
+{% else %}
+
+<form action="{{ url_for("complete", todo_id=todo_list.id) }}">
+  <input type="submit" value="Complete">
+  </input>
+</form>
+
+{% endif %}
+
+<form action="{{ url_for("delete", todo_id=todo_list.id) }}">
+  <input type="submit" value="Update">
+  </input>
+</form>
+
+<form action="{{ url_for("delete", todo_id=todo_list.id) }}">
+  <input type="submit" value="Delete">
+  </input>
+</form>
+
+{% endblock body %}
